@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TOTVS RH Inteligente</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,500;0,600;1,500&display=swap">
+<style>
+:root{--navy:#09132F;--purple:#7139DC;--cyan:#16C5E4;--gray:#F2F4FA;--bg:#fff;--card:#fff;--text:#09132F;--mut:#586179;--line:#dfe3ee;--ok:#15803d;--warn:#b45309;--bad:#b91c1c;--serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17234a;--card:#1f2d58;--text:#f1f4fc;--mut:#b6c0db;--line:#37497a;--gray:#1b2951;--navy:#121e43}:root:not([data-theme="light"]) .btn.p{background:var(--purple)}}
+:root[data-theme="dark"]{--bg:#17234a;--card:#1f2d58;--text:#f1f4fc;--mut:#b6c0db;--line:#37497a;--gray:#1b2951;--navy:#121e43}
+html{scroll-padding-top:70px;scroll-behavior:smooth}*{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px}
+button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.btn{border:1px solid transparent;border-radius:6px;padding:12px 22px;font-weight:600;font-size:14px;transition:background .2s,border-color .2s}
+.btn.p{background:var(--navy);color:#fff}.btn.p:hover{background:var(--purple)}
+:root[data-theme="dark"] .btn.p{background:var(--purple)}
+.btn.o{background:transparent;border-color:var(--line);color:var(--text)}.btn.o:hover{border-color:var(--navy)}
+.btn.s{padding:8px 14px;font-size:13px}.btn:disabled{opacity:.5;cursor:default}
+.lnk{background:none;border:0;color:var(--purple);font-weight:600;padding:0;font-size:14px}.lnk:hover{text-decoration:underline}
+nav.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav.top .wrap{display:flex;align-items:center;gap:32px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.01em}
+.logo i{width:28px;height:28px;border-radius:6px;background:var(--navy);border-bottom:3px solid var(--cyan);display:grid;place-items:center;color:#fff;font-style:normal;font-size:13px;font-weight:800}
+.logo small{font-weight:500;color:var(--mut);font-size:inherit}
+nav.top .links{display:flex;gap:28px;margin-left:auto;font-size:14px;color:var(--mut)}.links a:hover{color:var(--navy)}
+@media(max-width:760px){nav.top .links{display:none}nav.top .btn{margin-left:auto}}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:88px;padding-bottom:88px}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;padding-top:48px;padding-bottom:48px;gap:40px}}
+.eyebrow{display:block;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:22px}
+h1,h2,h3.serif{font-family:var(--serif);font-weight:600;letter-spacing:-.015em}
+h1{font-size:clamp(38px,5.2vw,60px);line-height:1.08;margin:0 0 22px}h1 em{font-style:italic;color:var(--purple);font-weight:500}
+.hero p{font-size:18px;color:var(--mut);max-width:500px;margin:0}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.mock{border:1px solid var(--line);border-radius:10px;background:var(--card);box-shadow:0 24px 50px -28px #09132f55;overflow:hidden}
+.mock .tb{display:flex;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--gray);align-items:center;font-size:12px;color:var(--mut)}
+.mock .tb i{width:9px;height:9px;border-radius:50%;background:var(--line)}.mock .tb span{margin-left:10px}
+.mock .bd{padding:20px}.ms{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.ms div{border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:11px;color:var(--mut)}
+.ms b{display:block;font-family:var(--serif);font-size:24px;color:var(--text);font-weight:600}
+.bars{display:flex;align-items:flex-end;gap:10px;height:96px;margin:20px 0 6px;border-bottom:1px solid var(--line)}.bars i{flex:1;background:var(--navy);border-radius:3px 3px 0 0}.bars i:nth-child(4){background:var(--purple)}
+.mrw{display:flex;justify-content:space-between;font-size:12px;padding:9px 0;border-top:1px solid var(--line);margin-top:8px;color:var(--mut)}
+.cap{font-size:11px;color:var(--mut);padding:0 20px 14px}
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--gray)}
+.strip .wrap{display:flex;gap:12px 36px;flex-wrap:wrap;justify-content:space-between;padding-top:18px;padding-bottom:18px;font-size:13px;color:var(--mut);font-weight:500}
+section.sec{padding:96px 0}section.alt{background:var(--gray)}
+h2{font-size:clamp(28px,3.6vw,42px);line-height:1.15;margin:0 0 14px}
+.lead{color:var(--mut);max-width:600px;margin:0 0 44px;font-size:16px}
+.mrow{display:grid;grid-template-columns:56px 1.3fr 1fr auto;gap:28px;align-items:start;padding:30px 0;border-top:1px solid var(--line)}
+#mods .mrow:last-child{border-bottom:1px solid var(--line)}
+.mrow .num{font-family:var(--serif);font-size:26px;color:var(--purple);line-height:1.2}
+.mrow h3{font-family:var(--serif);font-size:23px;margin:0 0 8px;font-weight:600}.mrow p{margin:0;color:var(--mut)}
+.mrow ul{margin:0;padding:0;list-style:none;font-size:13.5px;color:var(--mut)}.mrow li{padding:3px 0 3px 18px;position:relative}.mrow li:before{content:"";position:absolute;left:0;top:13px;width:8px;height:2px;background:var(--cyan)}
+@media(max-width:860px){.mrow{grid-template-columns:1fr;gap:12px}}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0}
+.col{padding:6px 32px 6px 0}.col+.col{border-left:1px solid var(--line);padding-left:32px}
+@media(max-width:760px){.col+.col{border-left:0;border-top:1px solid var(--line);padding:24px 0 0;margin-top:24px}}
+.col b{font-family:var(--serif);font-size:15px;color:var(--purple);font-weight:600}.col h3{font-family:var(--serif);font-size:22px;margin:6px 0 8px;font-weight:600}.col p{margin:0;color:var(--mut)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px}
+.stat{border-top:2px solid var(--text);padding-top:16px}.stat .v{font-family:var(--serif);font-size:48px;line-height:1;font-weight:600}.stat span{display:block;margin-top:10px;color:var(--mut);font-size:14px}
+.note{font-size:12px;color:var(--mut);margin-top:30px}
+footer{background:var(--navy);color:#9aa6c7;padding:36px 0;font-size:13px}
+.ov{position:fixed;inset:0;background:#09132fcc;z-index:50;display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}.ov.on{display:flex}
+.modal{background:var(--card);border-radius:10px;max-width:540px;width:100%;padding:30px;border:1px solid var(--line)}
+.modal h2{font-size:28px}
+.users{display:grid;gap:8px;margin:18px 0}
+.user{display:flex;gap:14px;align-items:center;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--text);transition:border-color .2s}
+.user:hover{border-color:var(--purple)}
+.av{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700;flex:none;font-family:var(--serif)}
+.user small{display:block;color:var(--mut)}
+.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
+.card h3{margin:0 0 6px;font-size:16px}.card p{color:var(--mut);font-size:14px;margin:0 0 10px}
+.ico{width:36px;height:36px;border-radius:8px;background:var(--gray);color:var(--navy);display:grid;place-items:center;margin-bottom:12px;border:1px solid var(--line)}
+.kpi{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.1}
+.mod:hover{border-color:var(--navy)}
+#app{display:none;min-height:100vh}#app.on{display:flex}
+aside{width:244px;background:var(--navy);color:#b6bfd8;padding:20px 12px;display:flex;flex-direction:column;gap:2px;flex:none;position:sticky;top:0;height:100vh}
+aside .logo{color:#fff;padding:2px 10px 20px}aside .logo i{background:#fff;color:var(--navy)}
+aside a{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:6px;font-size:14px;cursor:pointer;border-left:3px solid transparent}
+aside a:hover{background:#ffffff10}aside a.on{background:#ffffff14;color:#fff;border-left-color:var(--cyan)}
+aside .foot{margin-top:auto;font-size:12px;padding:10px}
+main{flex:1;min-width:0;background:var(--gray)}
+.bar{display:flex;align-items:center;gap:12px;padding:14px 28px;border-bottom:1px solid var(--line);background:var(--card);flex-wrap:wrap}
+.bar select,.fl select,.fl input{padding:8px 10px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit;font-size:13px}
+.pg{padding:32px 28px;max-width:1120px}.pg h2{font-size:30px;margin-bottom:8px}.pg .lead{margin-bottom:26px}
+.badge{display:inline-block;padding:2px 10px;border-radius:4px;font-size:12px;font-weight:600}
+.b-ok{background:#15803d1a;color:var(--ok)}.b-w{background:#b453091a;color:var(--warn)}.b-bad{background:#b91c1c1a;color:var(--bad)}.b-i{background:#7139dc1a;color:var(--purple)}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--mut);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.fl{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.ai{background:var(--gray);border-left:3px solid var(--purple);padding:10px 12px;border-radius:4px;margin-top:8px;font-size:13px}
+.chat{display:grid;grid-template-columns:200px 1fr;gap:16px}
+@media(max-width:860px){aside{position:fixed;left:-260px;z-index:30;transition:left .25s}aside.open{left:0}.chat{grid-template-columns:1fr}#mb{display:inline-block!important}}
+#mb{display:none}
+.msgs{height:340px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:6px}
+.m{max-width:82%;padding:10px 14px;border-radius:8px;font-size:14px}.m.u{align-self:flex-end;background:var(--navy);color:#fff}.m.b{background:var(--gray);border:1px solid var(--line)}
+.m small{display:block;color:var(--mut);margin-top:6px;font-size:11px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.chip{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:99px;padding:6px 13px;font-size:12px}.chip:hover{border-color:var(--purple)}
+.row{display:flex;gap:8px}.row input{flex:1;padding:11px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit}
+.flow{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}.flow span{font-size:12px;padding:6px 11px;border-radius:4px;background:var(--card);border:1px solid var(--line);color:var(--mut)}.flow span.d{background:var(--navy);color:#fff;border-color:var(--navy)}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 18px;border-radius:6px;font-size:14px;z-index:90;display:none}
+.lb{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:80;display:flex;align-items:center;gap:8px;background:var(--purple);color:#fff;border:0;border-radius:99px;padding:12px 18px;font-weight:600;font-size:14px;box-shadow:0 10px 24px -8px #7139dc99}
+.lp{position:fixed;right:20px;bottom:calc(80px + env(safe-area-inset-bottom,0px));width:310px;max-width:calc(100vw - 40px);background:var(--card);border:1px solid var(--line);border-radius:12px;z-index:80;display:none;box-shadow:0 24px 50px -20px #09132f88;overflow:hidden}.lp.on{display:block}
+.lp .hd{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--line);font-weight:600;font-size:14px}
+.lp .hd button{background:none;border:0;color:var(--mut);font-size:18px;line-height:1}
+.stg{background:linear-gradient(#e9edf8,#f6f8fd);height:210px}.stg svg{width:100%;height:100%;display:block}
+.a{transition:transform .5s ease}
+.sg .hdd{animation:nod .7s infinite alternate ease-in-out}.sg .mo{animation:mo .35s infinite alternate}
+@keyframes nod{to{transform:translateY(1.5px) rotate(1.5deg)}}@keyframes mo{to{transform:scaleY(1.9)}}
+.cap2{padding:12px 14px;border-top:1px solid var(--line);max-height:96px;overflow:auto;font-size:13px;font-weight:600;letter-spacing:.03em;position:relative}
+.cap2 span{display:inline-block;margin:0 6px 4px 0;padding:1px 5px;border-radius:4px;color:var(--mut)}.cap2 span.cur{background:var(--purple);color:#fff}
+.lp .ft{padding:0 14px 12px;font-size:11px;color:var(--mut)}.lp .ft .row{margin-bottom:8px}
+body.lib :is(p,h1,h2,h3,li,td,th,.m,label,.eyebrow,.stat,.ms div):hover{outline:2px dashed var(--cyan);outline-offset:3px;cursor:pointer}
+</style>
+</head>
+<body>
+<div id="site">
+<nav class="top"><div class="wrap">
+<a href="#inicio" class="logo"><i>T</i><span>TOTVS <small>RH Inteligente</small></span></a>
+<div class="links"><a href="#inicio">Início</a><a href="#solucoes">Soluções</a><a href="#como">Como funciona</a><a href="#beneficios">Benefícios</a></div>
+<button class="btn p s" onclick="openLogin()">Acessar plataforma</button></div></nav>
+<header class="hero" id="inicio"><div class="wrap">
+<div><span class="eyebrow">Pessoas · Departamento Pessoal · Inteligência artificial</span>
+<h1>RH mais inteligente.<br><em>Pessoas mais valorizadas.</em></h1>
+<p>Uma nova forma de conectar pessoas, inteligência artificial e gestão de recursos humanos. Automatize processos, antecipe problemas e transforme a experiência dos colaboradores.</p>
+<div class="cta"><a class="btn p" href="#solucoes">Conhecer soluções</a><button class="btn o" onclick="openLogin()">Acessar plataforma</button></div></div>
+<div class="mock"><div class="tb"><i></i><i></i><i></i><span>Visão geral · Operações</span></div><div class="bd">
+<div class="ms"><div>Absenteísmo<b>4,2%</b></div><div>Solicitações<b>12</b></div><div>Pendências<b>4</b></div></div>
+<div class="bars"><i style="height:62%"></i><i style="height:55%"></i><i style="height:70%"></i><i style="height:88%"></i><i style="height:66%"></i><i style="height:58%"></i></div>
+<div class="mrw"><span>Folha de maio · 5 inconsistências</span><span class="badge b-w">Em revisão</span></div>
+<div class="mrw"><span>Admissão · Aguardando revisão humana</span><span class="badge b-i">Onboarding</span></div></div>
+<div class="cap">Ilustração com dados fictícios.</div></div>
+</div></header>
+<div class="strip"><div class="wrap"><span>Acesso por perfil</span><span>Aprovação humana em toda decisão</span><span>Dados agregados, em linha com a LGPD</span><span>Trilha de auditoria</span></div></div>
+<section class="sec" id="solucoes"><div class="wrap"><h2>Quatro módulos, uma plataforma</h2><p class="lead">Cada módulo atende uma etapa da jornada de pessoas, com acesso controlado por perfil.</p><div id="mods"></div></div></section>
+<section class="sec alt" id="como"><div class="wrap"><h2>Como funciona</h2><p class="lead">Da identificação do perfil à decisão humana, com a inteligência artificial como apoio.</p>
+<div class="cols">
+<div class="col"><b>01</b><h3>Identificação</h3><p>O usuário escolhe um perfil e o menu se ajusta às permissões.</p></div>
+<div class="col"><b>02</b><h3>A IA analisa</h3><p>LLM com RAG, regras de negócio, detecção de anomalias e OCR, em serviços simulados.</p></div>
+<div class="col"><b>03</b><h3>A pessoa decide</h3><p>Nenhuma alteração é automática: toda ação sensível passa por aprovação humana.</p></div></div></div></section>
+<section class="sec" id="beneficios"><div class="wrap"><h2>Benefícios esperados</h2><p class="lead">Indicadores ilustrativos para a apresentação do conceito.</p>
+<div class="stats">
+<div class="stat"><div class="v">−40%</div><span>Redução de atividades manuais</span></div>
+<div class="stat"><div class="v">24h</div><span>Agilidade no atendimento</span></div>
+<div class="stat"><div class="v">+85%</div><span>Prevenção de inconsistências</span></div>
+<div class="stat"><div class="v">9/10</div><span>Experiência do colaborador</span></div></div>
+<p class="note">* Números exemplificativos e demonstrativos. Não representam resultados reais comprovados.</p></div></section>
+<footer><div class="wrap">Protótipo demonstrativo com dados fictícios. Sem integração real com ERP ou sistemas TOTVS.</div></footer>
+</div>
+
+<div class="ov" id="ov"><div class="modal" id="modal"></div></div>
+
+<div id="app">
+<aside id="side"><div class="logo"><i>T</i><span>RH Inteligente</span></div><div id="nav"></div>
+<div class="foot">Teste de bloqueio:<br><a style="padding:6px 0;color:var(--cyan)" onclick="location.hash='payroll'">Abrir rota do Validador de folha</a></div></aside>
+<main><div class="bar"><button class="btn o s" id="mb" onclick="side.classList.toggle('open')">☰</button><b id="who"></b><span style="margin-left:auto;font-size:13px;color:var(--mut)">Trocar perfil:</span><select id="sw" onchange="login(this.value)"></select><button class="btn o s" onclick="logout()">Sair</button></div><div class="pg" id="pg"></div></main>
+</div>
+<button class="lb" id="lb" aria-label="Tradutor de Libras indisponível neste ambiente" style="display:none" onclick="toast('O VLibras oficial não carregou neste ambiente de pré-visualização. Hospede a página em um site com acesso à internet.')"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12V6a1.5 1.5 0 013 0v5M10 11V4.5a1.5 1.5 0 013 0V11M13 11V6a1.5 1.5 0 013 0v7c0 4-2 7-6 7-3 0-5-2-6-5l-1-3a1.5 1.5 0 012.5-1.5L7 13"/></svg>Libras</button>
+<div vw class="enabled" id="vw"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s);
+function ic(k){const p={home:'<path d="M3 11l9-8 9 8M5 10v10h14V10"/>',chat:'<path d="M4 5h16v11H9l-5 4z"/>',shield:'<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',chart:'<path d="M4 20V4M4 20h16M8 16v-4M13 16V8M18 16v-6"/>',inbox:'<path d="M3 13l3-8h12l3 8v6H3zM3 13h5l1 3h6l1-3h5"/>',req:'<path d="M6 3h9l4 4v14H6zM9 12h7M9 16h7"/>',cfg:'<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2"/>'};return `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${p[k]}</svg>`}
+
+const MODS=[
+{n:'01',i:ic('chat'),t:'Assistente Virtual do Colaborador',d:'Atendimento inteligente 24 horas, respostas sobre políticas internas, benefícios, férias e dúvidas trabalhistas.',b:['Respostas com a fonte citada','Encaminhamento ao RH quando necessário'],r:'chat'},
+{n:'02',i:ic('shield'),t:'Validador Inteligente de Folha',d:'Identificação preventiva de inconsistências, erros cadastrais e possíveis problemas antes do fechamento da folha e envio ao eSocial.',b:['Menos retrabalho no fechamento','Aprovação humana obrigatória'],r:'payroll'},
+{n:'03',i:ic('chart'),t:'Inteligência Preditiva',d:'Análise de indicadores de absenteísmo e turnover para apoiar decisões estratégicas de gestão.',b:['Indicadores agregados','Sem ranking individual'],r:'analytics'},
+{n:'04',i:ic('inbox'),t:'Onboarding Automatizado',d:'Automatização da admissão, extração de informações de documentos e validação cadastral.',b:['Extração por OCR simulada','Revisão e aprovação por profissional'],r:'onboarding'}];
+$('#mods').innerHTML=MODS.map((m,k)=>`<div class="mrow"><span class="num">${m.n}</span><div><h3>${m.t}</h3><p>${m.d}</p></div><ul>${m.b.map(x=>`<li>${x}</li>`).join('')}</ul><button class="lnk" onclick="openMod(${k})">Conhecer módulo →</button></div>`).join('');
+
+const USERS={
+colab:{n:'Marina Souza',role:'Colaborador',dep:'Marketing',mods:['home','chat','req','cfg']},
+rh:{n:'Rafael Lima',role:'RH',dep:'Gente e Cultura',mods:['home','chat','onboarding','req','cfg']},
+dp:{n:'Camila Alves',role:'Departamento Pessoal',dep:'DP',mods:['home','chat','payroll','onboarding','req','cfg']},
+gestor:{n:'Eduardo Prado',role:'Gestor',dep:'Operações',mods:['home','chat','analytics','req','cfg']},
+admin:{n:'Helena Costa',role:'Administrador',dep:'TI Corporativa',mods:['home','chat','payroll','analytics','onboarding','req','cfg']}};
+const LBL={home:[ic('home'),'Visão geral'],chat:[ic('chat'),'Assistente virtual'],payroll:[ic('shield'),'Validador de folha'],analytics:[ic('chart'),'People Analytics'],onboarding:[ic('inbox'),'Onboarding'],req:[ic('req'),'Solicitações'],cfg:[ic('cfg'),'Configurações']};
+let cur=null,reqs=[{id:1042,t:'Declaração de trabalho',s:'Em análise'},{id:1038,t:'Ajuste de ponto',s:'Concluída'}],hist=[];
+
+function modal(h){$('#modal').innerHTML=h;$('#ov').classList.add('on')}
+function closeM(){$('#ov').classList.remove('on')}
+$('#ov').onclick=e=>{if(e.target.id==='ov')closeM()};
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',2600)}
+function openMod(k){const m=MODS[k];modal(`<span class="num">MÓDULO ${m.n}</span><h2 style="margin-top:6px">${m.t}</h2><p style="color:var(--mut)">${m.d}</p><ul>${m.b.map(x=>`<li>${x}</li>`).join('')}</ul><div class="row"><button class="btn p" onclick="openLogin()">Acessar plataforma</button><button class="btn o" onclick="closeM()">Fechar</button></div>`)}
+function openLogin(){modal(`<h2>Identifique-se</h2><p style="color:var(--mut);margin:0">Demonstração: escolha um usuário fictício. Não há autenticação real.</p><div class="users">${Object.entries(USERS).map(([k,u])=>`<button class="user" onclick="login('${k}')"><span class="av">${u.n[0]}</span><span><b>${u.n}</b><small>${u.role} · ${u.dep}</small></span></button>`).join('')}</div><button class="btn o s" onclick="closeM()">Cancelar</button>`)}
+function login(k){cur=k;closeM();$('#site').style.display='none';$('#app').classList.add('on');const u=USERS[k];
+$('#who').textContent=`${u.n} · ${u.role}`;$('#sw').innerHTML=Object.entries(USERS).map(([x,v])=>`<option value="${x}" ${x===k?'selected':''}>${v.role}</option>`).join('');
+$('#nav').innerHTML=u.mods.map(m=>`<a data-r="${m}" onclick="go('${m}')">${LBL[m][0]} ${LBL[m][1]}</a>`).join('');go('home')}
+function logout(){cur=null;$('#app').classList.remove('on');$('#site').style.display='block';history.replaceState(null,'',location.pathname)}
+function go(r){if(location.hash!=='#'+r)location.hash=r;else route()}
+function route(){if(!cur)return;let r=location.hash.slice(1)||'home';if(!LBL[r])r='home';const u=USERS[cur];side.classList.remove('open');
+document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.r===r));
+if(!u.mods.includes(r)){$('#pg').innerHTML=`<div class="card" style="border-color:var(--bad)"><h2>Acesso negado</h2><p>O perfil <b>${u.role}</b> não tem permissão para <b>${LBL[r][1]}</b>. O módulo está oculto no menu e a rota é bloqueada. Esta tentativa seria registrada na auditoria.</p><button class="btn p" onclick="go('home')">Voltar à visão geral</button></div>`;return}
+$('#pg').innerHTML=P[r]();if(I[r])I[r]()}
+window.addEventListener('hashchange',route);
+
+const P={};const I={};
+P.home=()=>{const u=USERS[cur];const h=new Date().getHours();const g=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
+return `<h2>${g}, ${u.n.split(' ')[0]}!</h2><p class="lead">Perfil: ${u.role}. Estes são os recursos disponíveis para você.</p><div class="grid g3">${u.mods.filter(m=>m!=='home').map(m=>`<div class="card mod"><div class="ico">${LBL[m][0]}</div><h3>${LBL[m][1]}</h3><button class="btn p s" onclick="go('${m}')">Abrir</button></div>`).join('')}</div>
+<h3 style="margin-top:28px">Indicadores (dados fictícios)</h3><div class="grid g4"><div class="card"><div class="kpi">${reqs.length}</div>Solicitações abertas</div><div class="card"><div class="kpi">24h</div>Assistente disponível</div><div class="card"><div class="kpi">3</div>Avisos do RH</div></div>`};
+
+const KB=[
+[/f[eé]rias.*(dispon|quantos|saldo)|quantos dias/,'Segundo o sistema simulado, você tem 18 dias de férias disponíveis, com período aquisitivo até 03/2027.','Política de Férias v3 · Dados simulados do ERP',.92],
+[/solicitar.*f[eé]rias|pedir f[eé]rias/,'Acesse Solicitações > Nova solicitação > Férias, informe as datas e aguarde a aprovação do gestor. O pedido deve ser feito com 30 dias de antecedência.','Manual do Colaborador, cap. 4 · CLT art. 135',.9],
+[/vale|alimenta/,'O vale-alimentação é creditado até o 5º dia útil de cada mês, com valor definido na política de benefícios. Não há desconto superior a 20% em folha.','Política de Benefícios 2026',.88],
+[/declara/,'A declaração de trabalho pode ser pedida em Solicitações > Declarações. O prazo estimado de emissão é de 2 dias úteis.','Catálogo de Serviços do RH',.9],
+[/falta|aus[eê]ncia/,'Faltas justificadas exigem comprovante em até 48 horas. Faltas sem justificativa podem gerar desconto do dia e do DSR, conforme a legislação aplicável.','Política de Frequência · CLT art. 473',.85]];
+P.chat=()=>`<h2>TOTVS IA — Assistente de Pessoas</h2><p class="lead">Arquitetura conceitual: LLM + RAG sobre políticas internas. Respostas simuladas.</p><div class="chat"><div class="card"><b style="font-size:13px">Histórico</b><div id="hist" style="font-size:12px;color:var(--mut);margin-top:8px"></div></div><div class="card"><div class="msgs" id="msgs"><div class="m b">Olá! Sou o assistente de pessoas. Posso ajudar com férias, benefícios e políticas. Não invento informações: se não souber, encaminho ao RH.</div></div><div class="chips">${['Quantos dias de férias eu tenho disponíveis?','Como funciona o vale-alimentação?','Como solicitar uma declaração de trabalho?','Qual é a política de faltas?','Como faço para solicitar minhas férias?'].map(q=>`<button class="chip" onclick="ask(this.textContent)">${q}</button>`).join('')}</div><div class="row"><input id="q" placeholder="Digite sua pergunta" onkeydown="if(event.key==='Enter')ask()"><button class="btn p" onclick="ask()">Enviar</button></div></div></div>`;
+I.chat=()=>{$('#hist').innerHTML=hist.map(h=>`• ${h}`).join('<br>')||'Nenhuma conversa ainda.'};
+function ask(t){const i=$('#q');const q=(t||i.value).trim();if(!q)return;i.value='';hist.unshift(q.slice(0,34));const M=$('#msgs');
+M.innerHTML+=`<div class="m u">${q.replace(/</g,'&lt;')}</div>`;const l=q.toLowerCase();const hit=KB.find(k=>k[0].test(l));
+setTimeout(()=>{if(hit&&!/demiss|process|assédio|assedio/.test(l))M.innerHTML+=`<div class="m b">${hit[1]}<small>Fonte: ${hit[2]} · Confiança ${Math.round(hit[3]*100)}%</small></div>`;
+else{M.innerHTML+=`<div class="m b">Não tenho dados suficientes para responder com segurança. Posso encaminhar sua dúvida ao atendimento humano do RH.<small>Confiança baixa · <a style="color:var(--purple);text-decoration:underline;cursor:pointer" onclick="newReq('${q.replace(/'/g,'’').slice(0,40)}')">Encaminhar ao RH</a></small></div>`}
+M.scrollTop=M.scrollHeight;I.chat()},500);M.scrollTop=M.scrollHeight}
+function newReq(t){reqs.unshift({id:1043+reqs.length,t:t||'Dúvida geral',s:'Em análise'});toast('Solicitação encaminhada ao RH')}
+
+P.req=()=>`<h2>Solicitações</h2><div class="row" style="margin:12px 0"><input id="rt" placeholder="Descreva a solicitação (ex.: Segunda via de holerite)"><button class="btn p" onclick="newReq($('#rt').value);route()">Abrir</button></div><div class="card tw"><table><tr><th>Nº</th><th>Assunto</th><th>Status</th></tr>${reqs.map(r=>`<tr><td>#${r.id}</td><td>${r.t}</td><td><span class="badge ${r.s==='Concluída'?'b-ok':'b-w'}">${r.s}</span></td></tr>`).join('')}</table></div>`;
+
+const INC=[
+['Func. 0147','CPF divergente','CPF do cadastro difere do documento enviado','Alta','Pendente','Corrigir CPF após conferir o documento original','O CPF cadastrado tem dígito verificador diferente do documento. Sugestão: solicitar nova foto do CPF e ajustar após revisão.'],
+['Func. 0233','Salário fora do padrão','Valor 38% acima da faixa do cargo','Média','Em revisão','Validar com a tabela salarial','O valor foge da faixa histórica do cargo. Pode ser promoção não registrada. Sugestão: confirmar o ato de alteração.'],
+['Func. 0310','Rubrica incorreta','Rubrica de adicional noturno em turno diurno','Média','Pendente','Revisar rubrica no lançamento','O evento de adicional noturno não condiz com a escala diurna. Sugestão: revisar o ponto antes do fechamento.'],
+['Func. 0058','Dados bancários','Agência com formato inválido','Baixa','Aprovado','Atualizar dados bancários','Formato de agência incompatível com o banco. Sugestão: confirmar com o colaborador.'],
+['Func. 0412','Evento eSocial','Evento S-2299 sem data de desligamento','Alta','Pendente','Completar o evento antes do envio','Evento sem campo obrigatório pode ser rejeitado. Sugestão: conferir a data no termo de rescisão.']];
+P.payroll=()=>`<h2>Validador Inteligente de Folha</h2><p class="lead">Regras de negócio + detecção de anomalias + LLM para explicar. Nenhuma alteração é feita sem aprovação humana.</p>
+<div class="grid g4"><div class="card"><div class="kpi">1.248</div>Processados</div><div class="card"><div class="kpi">5</div>Inconsistências</div><div class="card"><div class="kpi">1.243</div>Aprovados</div><div class="card"><div class="kpi">4</div>Para revisão</div></div>
+<div class="fl"><select id="fc" onchange="fil()"><option value="">Criticidade: todas</option><option>Alta</option><option>Média</option><option>Baixa</option></select><select id="fs" onchange="fil()"><option value="">Status: todos</option><option>Pendente</option><option>Em revisão</option><option>Aprovado</option></select></div><div class="card tw"><table id="tb"></table></div>`;
+I.payroll=()=>fil();
+function fil(){const c=$('#fc').value,s=$('#fs').value;const bc={Alta:'b-bad',Média:'b-w',Baixa:'b-ok'};
+$('#tb').innerHTML=`<tr><th>Funcionário</th><th>Tipo</th><th>Descrição</th><th>Criticidade</th><th>Status</th><th>Ação recomendada</th><th></th></tr>`+INC.map((r,k)=>[r,k]).filter(([r])=>(!c||r[3]===c)&&(!s||r[4]===s)).map(([r,k])=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span class="badge ${bc[r[3]]}">${r[3]}</span></td><td>${r[4]}</td><td>${r[5]}<div class="ai" id="ai${k}" style="display:none">${r[6]}<br><small>Sugestão da IA: depende de aprovação humana.</small></div></td><td><button class="btn p s" onclick="document.getElementById('ai${k}').style.display='block'">Analisar com IA</button></td></tr>`).join('')}
+
+const DATA={Todos:[4.1,3.8,4.4,4.9,4.2,3.9],Operações:[5.2,4.8,5.6,6.1,5.4,4.9],Comercial:[3.4,3.1,3.6,4.0,3.5,3.2],Administrativo:[2.9,2.7,3.0,3.3,2.8,2.6]};
+const MES=['Mai','Jun','Jul','Ago','Set','Out'];
+P.analytics=()=>`<h2>People Analytics Inteligente</h2><p class="lead">Dados fictícios e agregados. Modelos conceituais: Random Forest, XGBoost e SHAP. Previsões apoiam decisões e nunca são decisões automáticas sobre pessoas.</p>
+<div class="fl"><select id="ad" onchange="ch()">${Object.keys(DATA).map(d=>`<option>${d}</option>`).join('')}</select><select id="ap" onchange="ch()"><option value="6">Últimos 6 meses</option><option value="3">Últimos 3 meses</option></select></div>
+<div class="grid g4"><div class="card"><div class="kpi" id="k1"></div>Absenteísmo médio</div><div class="card"><div class="kpi">11,8%</div>Turnover anual</div><div class="card"><div class="kpi">6,2%</div>Horas extras s/ folha</div></div>
+<div class="card" style="margin-top:18px"><b>Absenteísmo (%) por mês</b> <small style="color:var(--mut)">passe o mouse nas barras</small><div id="chart"></div><div id="tip" style="font-size:13px;color:var(--purple);min-height:20px"></div></div>
+<div class="grid g3" style="margin-top:18px"><div class="card"><h3>Projeção</h3><p>Tendência de leve alta no próximo trimestre em equipes com horas extras elevadas (previsão com incerteza).</p></div>
+<div class="card"><h3>Fatores de influência (SHAP)</h3><p>Horas extras acumuladas ▮▮▮▮▮ · Tempo na função ▮▮▮ · Distância do trabalho ▮▮</p></div>
+<div class="card"><h3>Uso responsável</h3><p>Sem ranking individual, sem recomendação de punição ou desligamento. Foco em melhorias do ambiente de trabalho.</p></div></div>`;
+I.analytics=()=>ch();
+function ch(){const d=DATA[$('#ad').value],n=+$('#ap').value;const v=d.slice(-n),m=MES.slice(-n);const mx=7;
+$('#k1').textContent=(v.reduce((a,b)=>a+b,0)/n).toFixed(1).replace('.',',')+'%';
+$('#chart').innerHTML=`<svg viewBox="0 0 400 180" style="width:100%;max-width:560px">${v.map((x,i)=>{const w=300/n,h=x/mx*130,X=40+i*w;return `<rect x="${X+6}" y="${150-h}" width="${w-12}" height="${h}" rx="5" fill="#7139DC" opacity=".85" onmouseover="this.setAttribute('fill','#16C5E4');tip.textContent='${m[i]}: ${String(x).replace('.',',')}% de absenteísmo'" onmouseout="this.setAttribute('fill','#7139DC')"/><text x="${X+w/2}" y="168" font-size="11" text-anchor="middle" fill="currentColor">${m[i]}</text>`}).join('')}</svg>`}
+
+const DOCS=['RG','CPF','Carteira de Trabalho','Comprovante de residência','Outros documentos'];let ob={st:0,docs:{}};
+const ST=['Aguardando documentos','Em processamento','Aguardando revisão','Documentação aprovada','Admissão concluída'];
+P.onboarding=()=>`<h2>Admissão Inteligente</h2><p class="lead">Candidata fictícia: Beatriz Nogueira · Analista de Atendimento. A aprovação final é de um profissional autorizado.</p>
+<div class="flow" id="fw"></div><div class="card" id="ob"></div>`;
+I.onboarding=()=>{ob={st:0,docs:{}};ro()};
+function ro(){const steps=['Cadastro','Documentos','OCR','Validação','Inconsistências','Revisão humana','Aprovação'];const idx=[1,1,2,3,3,4,6][Math.min(ob.st+(ob.st>2?2:0),4)]||0;
+$('#fw').innerHTML=steps.map((s,i)=>`<span class="${i<=[1,2,5,6,6][ob.st]?'d':''}">${i+1}. ${s}</span>`).join('');
+let h=`<p>Status: <span class="badge b-i">${ST[ob.st]}</span></p>`;
+if(ob.st===0)h+=`<p>Envie os documentos (simulado):</p><div class="chips">${DOCS.map(d=>`<button class="chip" ${ob.docs[d]?'disabled':''} onclick="ob.docs['${d}']=1;ro()">${ob.docs[d]?'✓ ':''}${d}</button>`).join('')}</div><button class="btn p" ${Object.keys(ob.docs).length<4?'disabled style="opacity:.5"':''} onclick="proc()">Processar com OCR</button>`;
+if(ob.st===1)h+=`<p>Extraindo dados por OCR…</p>`;
+if(ob.st===2)h+=`<p>Confira os dados extraídos (editáveis):</p><div class="grid g3"><label>Nome<input value="Beatriz Nogueira" style="width:100%;padding:8px"><br><span class="badge b-ok">Validado</span></label><label>CPF<input value="123.456.789-00" style="width:100%;padding:8px"><br><span class="badge b-w">Verificar dígito</span></label><label>Endereço<input value="Rua das Acácias, 120" style="width:100%;padding:8px"><br><span class="badge b-ok">Validado</span></label></div><p class="ai">IA identificou 1 exceção: o CPF precisa de conferência. Decisão final é humana.</p><button class="btn p" onclick="ob.st=3;ro()">Aprovar documentação</button>`;
+if(ob.st===3)h+=`<p>Documentação aprovada por ${USERS[cur].n}.</p><button class="btn p" onclick="ob.st=4;ro();toast('Admissão concluída')">Concluir admissão</button>`;
+if(ob.st===4)h+=`<p>Admissão concluída. Registro enviado para o fluxo simulado.</p><button class="btn o" onclick="I.onboarding()">Nova admissão</button>`;
+$('#ob').innerHTML=h}
+function proc(){ob.st=1;ro();setTimeout(()=>{ob.st=2;ro()},1300)}
+
+P.cfg=()=>{const u=USERS[cur];return `<h2>Configurações</h2><div class="card"><p><b>Usuário:</b> ${u.n} · ${u.role}</p><p><b>Módulos autorizados:</b> ${u.mods.filter(m=>m!=='home').map(m=>LBL[m][1]).join(', ')}</p><button class="btn o s" onclick="document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark'">Alternar tema claro/escuro</button></div>`+(cur==='admin'?`<h3>Usuários e permissões</h3><div class="card tw"><table><tr><th>Usuário</th><th>Perfil</th><th>Módulos</th></tr>${Object.values(USERS).map(x=>`<tr><td>${x.n}</td><td>${x.role}</td><td>${x.mods.length-1}</td></tr>`).join('')}</table></div><h3>Auditoria</h3><div class="card" style="font-size:13px">• Tentativas de acesso negado são registradas (simulado).<br>• Respostas da IA com baixa confiança são encaminhadas ao RH.</div>`:'')};
+
+(function(){const nf=()=>{$('#lb').style.display='flex'};const sc=document.createElement('script');sc.src='https://vlibras.gov.br/app/vlibras-plugin.js';sc.onload=()=>{try{new window.VLibras.Widget('https://vlibras.gov.br/app')}catch(e){nf()}};sc.onerror=nf;document.head.appendChild(sc);setTimeout(()=>{if(!window.VLibras)nf()},5000)})();
+</script>
+</body>
+</html>
